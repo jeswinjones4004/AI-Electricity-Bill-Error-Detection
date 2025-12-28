@@ -2,12 +2,26 @@
 
 An AI-powered multi-agent system that analyzes electricity bills, detects anomalies, and provides actionable recommendations for reducing costs.
 
+## 🚀 Live Demo & Deployment
+
+### Option 1: Frontend Only (Easiest)
+Get the UI running in seconds. Since the current version uses a Mock AI engine, the frontend works fully without the backend.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fjeswinjones4004%2FAI-Electricity-Bill-Error-Detection&root-directory=frontend)
+
+### Option 2: Full Stack (Frontend + Backend)
+Deploy both the React Frontend and the Python FastAPI Backend.
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/jeswinjones4004/AI-Electricity-Bill-Error-Detection)
+
+---
+
 ## Project Structure
 
 - **frontend/**: React + Vite application with Premium UI.
 - **backend/**: FastAPI Python server for OCR and Analysis.
 
-## Getting Started
+## Getting Started Locally
 
 ### Prerequisites
 - Node.js (v18+)
@@ -34,8 +48,3 @@ Access the API docs at `http://localhost:8000/docs`.
 - **Error Detection**: Identifies tariff mismatches and calculation errors.
 - **Savings Engine**: Recommends ways to reduce electricity consumption.
 - **Premium UI**: Modern Glassmorphism design with animations.
-
-## Implementation Details
-- **Frontend**: React, CSS Variables, Glassmorphism
-- **Backend**: FastAPI, Pydantic
-- **AI/ML**: (Mocked for initial version) Ready for Tesseract OCR & Classification Models.
