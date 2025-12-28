@@ -48,3 +48,43 @@ Access the API docs at `http://localhost:8000/docs`.
 - **Error Detection**: Identifies tariff mismatches and calculation errors.
 - **Savings Engine**: Recommends ways to reduce electricity consumption.
 - **Premium UI**: Modern Glassmorphism design with animations.
+
+---
+
+## Auto-deploy to Render (GitHub Actions)
+
+This repository includes a GitHub Actions workflow that triggers Render deploys when you push to `main`.
+
+- Workflow path: `.github/workflows/deploy-to-render.yml`
+
+Required repository secrets (set these in your GitHub repository Settings → Secrets):
+
+- `RENDER_API_KEY`: Your Render API key (create in Render dashboard → Account → API Keys).
+- `RENDER_SERVICE_ID_BACKEND`: The Render service ID for the backend service (find in Render dashboard → Service → Settings → Service ID).
+- `RENDER_SERVICE_ID_FRONTEND`: The Render service ID for the frontend/static service.
+
+How it works:
+
+- On push to `main`, the workflow will POST to Render's API to create a new deploy for each service ID provided.
+- The workflow requires that you have already imported the repo into Render using `render.yaml` (or manually created two services for backend and frontend) so you can obtain the Service IDs.
+
+Steps to enable CI deploy:
+
+1. Push this repo to GitHub (if not already):
+
+```bash
+git remote add origin <your-repo-url>
+git push -u origin main
+```
+
+2. In Render, import the repo using `render.yaml` (Dashboard → New → Import from GitHub → Deploy using render.yaml) or create two services matching the `render.yaml` configuration.
+
+3. In GitHub repo Settings → Secrets → Actions, add `RENDER_API_KEY`, `RENDER_SERVICE_ID_BACKEND`, and `RENDER_SERVICE_ID_FRONTEND`.
+
+4. Push a commit to `main`. The workflow will run and trigger deploys on Render.
+
+Notes:
+
+- If you prefer not to store service IDs as secrets, you can modify the workflow to trigger a single deploy (or to use only the frontend/backend service you need).
+- For full automation (create services on first deploy from `render.yaml`), follow Render's documentation for `render.yaml` import; service IDs are available after import.
+
